@@ -1,0 +1,25 @@
+﻿@model IEnumerable<LibraryManagment.Data.Model.Book>
+@{
+    ViewData["Title"] = "AllBooks";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class=" row">
+@foreach (var book in Model)
+{
+    <div class="col-lg-3 col-md-3 col-sm-4" style="padding-top:50px">
+        <div class="card" style="width: 22rem;">
+            <img class="card-img-top" src="~/images/img1.jpeg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">@book.Name</h5>
+                <p class="card-text">Author Name: @book.Author.Name</p>
+                <p class="card-text">Book Version: @book.Version</p>
+                <a asp-action="Edit" asp-controller="Book" asp-route-id="@book.ID" class="btn btn-default">Edit</a>
+                <a asp-action="Delete" asp-controller="Book" asp-route-id="@book.ID" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+}
+</div>
+
+

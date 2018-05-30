@@ -34,7 +34,7 @@ namespace LibraryManagment.Controllers
         public IActionResult Update(Book book)
         {
             this.bookRepository.Update(book);
-            return RedirectToAction("Edit", "Author", new { id = book.AuthorId });
+            return RedirectToAction("BookList");
         }
 
         public IActionResult Delete(int id)
@@ -49,5 +49,24 @@ namespace LibraryManagment.Controllers
             IEnumerable<Book> books = this.authorRepository.GetAuthorById(AuthorID).Books;
             return View(books);
         }
+
+        public IActionResult Create()
+        {
+            BookViewModel bookViewModel = new BookViewModel() { Authors = this.authorRepository.GetAll() };
+            return View("Create", bookViewModel);
+        }
+
+        public IActionResult CreateNew(Book book)
+        {
+            this.bookRepository.Create(book);
+            BookViewModel bookViewModel = new BookViewModel() { Book = book, Authors = this.authorRepository.GetAll() };
+            return RedirectToAction("BookList");
+        }
+
+        public IActionResult BookList() {
+            var books = this.bookRepository.GetAllBooksWithAuthors();
+            return View("AllBooks", books);
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 ﻿using LibraryManagment.Data.Interfaces;
 using LibraryManagment.Data.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,9 @@ namespace LibraryManagment.Data.Repository
             this.context = context;
         }
 
-        
+        public IEnumerable<Book> GetAllBooksWithAuthors()
+        {
+            return this.context.Books.Include(a => a.Author);
+        }
     }
 }

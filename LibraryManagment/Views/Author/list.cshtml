@@ -2,12 +2,8 @@
 @{
     ViewData["Title"] = "All Authors";
 }
-
-
-<div>
-    <a name="btnCreate" value="Create New Author" class="btn btn-primary"
-       asp-action="CreateNew" asp-controller="Author">Create New Author</a>
-</div>
+<a name="btnCreate" value="Create New Author" class="btn btn-primary mt-5" style="margin: 10px"
+   asp-action="CreateNew" asp-controller="Author">Create New Author</a>
 
 <div class="row">
 
@@ -20,7 +16,7 @@
                 </div>
                 <div class="panel-body">
                     <p>@author.Name has @author.Age years old.</p>
-                    <p>Boos Count : @author.Books.Count book(s)</p>
+                    <p>Books Count : @author.Books.Count book(s)</p>
                 </div>
                 <div class="panel-footer">
                     <a asp-action="Books" asp-controller="Book" asp-route-AuthorID="@author.ID" class="btn btn-success">View Book List</a>

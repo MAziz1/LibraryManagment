@@ -9,6 +9,7 @@ namespace LibraryManagment.Data.Interfaces
 {
     public interface IBookRepository : IRepository<Book>
     {
-        
+        IEnumerable<Book> GetAllBooksWithAuthors();
+
     }
 }
