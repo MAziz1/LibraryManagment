@@ -1,0 +1,23 @@
+﻿@model LibraryManagment.Data.Model.Author
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Create" asp-controller="Author" method="post" role="form">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" id="txtName" asp-for="Name">
+    </div>
+    <div class="form-group">
+        <label asp-for="Age"></label>
+        <input type="number" class="form-control" id="txtName" asp-for="Age" min="35" max="100">
+    </div>
+    <div class="form-group">
+        <div class="btn-group col-md-offset-2 col-md-6">
+            <input class="btn btn-success" type="submit" name="" value="Create" /> &nbsp;
+            <input class="btn btn-default" type="submit" name="" value="Return" asp-action="Index" asp-controller="Author" />
+        </div>
+    </div>
+
+</form>
